@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">游库</string>
+    <string name="download">下载</string>
+    <string name="breakpoint">断点续传</string>
+    <string name="downloading">正在下载...</string>
+    <string name="download_fail">下载失败</string>
+    <string name="download_success">下载成功</string>
+    <string name="function_policy">动态方法调用</string>
+</resources>
