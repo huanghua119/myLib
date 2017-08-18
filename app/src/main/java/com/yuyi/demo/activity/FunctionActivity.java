@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.yuyi.demo.R;
 import com.yuyi.lib.IFunctionManage;
-import com.yuyi.lib.abs.BaseActivity;
+import com.yuyi.lib.abs.BaseSwipeBackActivity;
 import com.yuyi.lib.utils.JSONUtils;
 import com.yuyi.lib.utils.MyLog;
 
@@ -23,7 +23,7 @@ import org.json.JSONObject;
  * @author huanghua
  */
 
-public class FunctionActivity extends BaseActivity {
+public class FunctionActivity extends BaseSwipeBackActivity {
 
     private IFunctionManage mFunctionManage;
 
@@ -41,13 +41,13 @@ public class FunctionActivity extends BaseActivity {
     };
 
     @Override
-    public void onCreateView() {
-        setContentView(R.layout.activity_function);
-        setReturnText(R.string.function_policy);
+    public int bindLayout() {
+        return R.layout.activity_function;
     }
 
     @Override
     public void initView() {
+        setReturnText(R.string.function_policy);
         Button btn = (Button) findViewById(R.id.btn);
         final TextView textView = (TextView) findViewById(R.id.text);
         btn.setOnClickListener(v -> {

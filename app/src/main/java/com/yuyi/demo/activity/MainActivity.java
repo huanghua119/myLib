@@ -15,19 +15,19 @@ public class MainActivity extends BaseActivity {
 
     private ListView mListView = null;
 
-    private int[] mListText = {R.string.breakpoint, R.string.function_policy};
+    private int[] mListText = {R.string.breakpoint, R.string.function_policy, R.string.panel_dount, R.string.image_preview};
 
-    private Class[] mListClass = {DownloadActivity.class, FunctionActivity.class};
+    private Class[] mListClass = {DownloadActivity.class, FunctionActivity.class, PanelDountActivity.class, ImagePreviewActivity.class};
 
     @Override
-    public void onCreateView() {
-        setContentView(R.layout.activity_main);
-        setReturnVisibility(View.GONE);
-        setTitle(R.string.app_name);
+    public int bindLayout() {
+        return R.layout.activity_main;
     }
 
     @Override
     public void initView() {
+        setReturnVisibility(View.GONE);
+        setTitle(R.string.app_name);
         mListView = (ListView) findViewById(R.id.listview);
         mListView.setAdapter(new BaseAdapter() {
             @Override

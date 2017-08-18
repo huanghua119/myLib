@@ -4,7 +4,7 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 
 import com.yuyi.demo.R;
-import com.yuyi.lib.abs.BaseActivity;
+import com.yuyi.lib.abs.BaseSwipeBackActivity;
 import com.yuyi.lib.download.DownLoadObserver;
 import com.yuyi.lib.download.DownloadInfo;
 import com.yuyi.lib.download.DownloadManager;
@@ -14,7 +14,7 @@ import com.yuyi.lib.utils.MyLog;
  * @author huanghua
  */
 
-public class DownloadActivity extends BaseActivity {
+public class DownloadActivity extends BaseSwipeBackActivity {
 
     private Button mDownload = null;
 
@@ -23,13 +23,13 @@ public class DownloadActivity extends BaseActivity {
     private String url = "http://ouga1oem3.bkt.clouddn.com/Player-_3g-2.4-release.apk";
 
     @Override
-    public void onCreateView() {
-        setContentView(R.layout.activity_download);
-        setReturnText(R.string.breakpoint);
+    public int bindLayout() {
+        return R.layout.activity_download;
     }
 
     @Override
     public void initView() {
+        setReturnText(R.string.breakpoint);
         mDownload = (Button) findViewById(R.id.start_download);
         mDownload.setOnClickListener(view -> startDownload());
 
