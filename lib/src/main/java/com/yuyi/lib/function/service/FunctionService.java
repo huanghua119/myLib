@@ -9,6 +9,7 @@ import android.os.RemoteException;
 import android.text.TextUtils;
 
 import com.yuyi.lib.IFunctionManage;
+import com.yuyi.lib.reflect.Reflect;
 import com.yuyi.lib.utils.JSONUtils;
 import com.yuyi.lib.utils.MyLog;
 
@@ -17,8 +18,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Method;
 
 import dalvik.system.DexClassLoader;
 
@@ -115,13 +114,8 @@ public class FunctionService extends Service {
                     String optimizedDirectory = getApplicationContext().getDir("dex", Context.MODE_PRIVATE).getAbsolutePath();
 
                     DexClassLoader policyLoader = new DexClassLoader(functionJSON.path, optimizedDirectory, null, getApplicationContext().getClassLoader());
-                    Class functionPolicy = policyLoader.loadClass(functionJSON.className);
-                    Constructor constructor = functionPolicy.getConstructor(Context.class);
-                    Object functionObject = constructor.newInstance(getApplicationContext());
-
-                    Method method = functionPolicy.getMethod(name, functionJSON.params);
-                    String message = (String) method.invoke(functionObject, functionJSON.datas);
-                    result = getJSONResult("success", message);
+                    String message2 = Reflect.on(functionJSON.className, policyLoader).create(getApplicationContext()).call(name, functionJSON.datas).get();
+                    result = getJSONResult("success", message2);
                 } catch (Exception e) {
                     e.printStackTrace();
                     result = getJSONResult("error", e.getMessage());

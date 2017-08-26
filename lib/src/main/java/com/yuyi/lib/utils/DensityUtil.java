@@ -14,6 +14,10 @@ public class DensityUtil {
         return (int) (dpValue * scale + 0.5f);
     }
 
+    public static int dpToPx(Context context, int dp) {
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp,
+                context.getResources().getDisplayMetrics());
+    }
 
     /**
      * 根据手机的分辨率从 px(像素) 的单位 转成为 dp

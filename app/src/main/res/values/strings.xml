@@ -9,4 +9,5 @@
     <string name="panel_dount">圆形统计</string>
     <string name="image_preview">图片预览</string>
     <string name="save">保存</string>
+    <string name="pager_view">PagerView</string>
 </resources>

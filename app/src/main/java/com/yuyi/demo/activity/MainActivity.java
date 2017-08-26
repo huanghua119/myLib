@@ -15,9 +15,9 @@ public class MainActivity extends BaseActivity {
 
     private ListView mListView = null;
 
-    private int[] mListText = {R.string.breakpoint, R.string.function_policy, R.string.panel_dount, R.string.image_preview};
+    private int[] mListText = {R.string.breakpoint, R.string.function_policy, R.string.panel_dount, R.string.image_preview, R.string.pager_view};
 
-    private Class[] mListClass = {DownloadActivity.class, FunctionActivity.class, PanelDountActivity.class, ImagePreviewActivity.class};
+    private Class[] mListClass = {DownloadActivity.class, FunctionActivity.class, PanelDountActivity.class, ImagePreviewActivity.class, PagerActivity.class};
 
     @Override
     public int bindLayout() {
