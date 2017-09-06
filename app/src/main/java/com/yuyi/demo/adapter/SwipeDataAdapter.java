@@ -2,7 +2,6 @@ package com.yuyi.demo.adapter;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
-import android.databinding.ViewDataBinding;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,8 +12,6 @@ import com.yuyi.demo.databinding.SwipeItemBinding;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static android.R.attr.data;
 
 /**
  * @author huanghua

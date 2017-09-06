@@ -77,7 +77,6 @@ public class SwipeDeteleActivity extends BaseSwipeBackActivity {
         mRecyclerView.setSwipeMenuCreator(mSwipeMenuCreator);
         mRecyclerView.setSwipeItemClickListener((v, position) -> {
             MyLog.i("onItemClick:" + position);
-            MyLog.i("onItemClick:" + position);
         });
         mRecyclerView.setSwipeMenuItemClickListener(menuBridge -> {
             int itemPosition = menuBridge.getAdapterPosition();
