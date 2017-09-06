@@ -23,13 +23,12 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activity.DownloadActivity">
-        </activity>
+        <activity android:name=".activity.DownloadActivity"/>
         <activity android:name=".activity.FunctionActivity"/>
         <activity android:name=".activity.PanelDountActivity"/>
         <activity android:name=".activity.ImagePreviewActivity"/>
-        <activity android:name=".activity.PagerActivity">
-        </activity>
+        <activity android:name=".activity.PagerActivity"/>
+        <activity android:name=".activity.SwipeDeteleActivity"/>
     </application>
 
 </manifest>

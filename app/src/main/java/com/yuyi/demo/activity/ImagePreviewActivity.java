@@ -11,8 +11,11 @@ import android.view.ViewGroup;
 
 import com.yuyi.demo.R;
 import com.yuyi.lib.abs.BaseSwipeBackActivity;
+import com.yuyi.lib.bean.FileBean;
 import com.yuyi.lib.image.ImageFragment;
+import com.yuyi.lib.utils.FileUtil;
 import com.yuyi.lib.utils.ImageUtils;
+import com.yuyi.lib.utils.MyLog;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -66,8 +69,13 @@ public class ImagePreviewActivity extends BaseSwipeBackActivity {
         setTitleBarColor(android.R.color.transparent);
         setTitleRight(R.string.save, v -> ImageUtils.saveImage(mExtraPics.get(mCurrentItem), SAVE_PATH, getApplicationContext()));
         mViewPager = (ViewPager) findViewById(R.id.viewPager);
-        initViewPager();
-        initCurrentItem();
+        FileUtil.queryFiles(this, new String[]{"gif"}, list -> {
+            for (FileBean fileBean : list) {
+                mExtraPics.add(fileBean.getPath());
+            }
+            initViewPager();
+            initCurrentItem();
+        });
     }
 
     private void initViewPager() {

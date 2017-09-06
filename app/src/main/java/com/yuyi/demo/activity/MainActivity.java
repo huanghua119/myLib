@@ -1,23 +1,25 @@
 package com.yuyi.demo.activity;
 
-import android.content.Intent;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.support.design.internal.BottomNavigationItemView;
+import android.support.design.internal.BottomNavigationMenuView;
+import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.ViewPager;
 
 import com.yuyi.demo.R;
+import com.yuyi.demo.fragment.LibFragment;
 import com.yuyi.lib.abs.BaseActivity;
+import com.yuyi.lib.reflect.Reflect;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends BaseActivity {
 
-    private ListView mListView = null;
-
-    private int[] mListText = {R.string.breakpoint, R.string.function_policy, R.string.panel_dount, R.string.image_preview, R.string.pager_view};
-
-    private Class[] mListClass = {DownloadActivity.class, FunctionActivity.class, PanelDountActivity.class, ImagePreviewActivity.class, PagerActivity.class};
+    private ViewPager mViewPager;
+    private BottomNavigationView mBottomNavigationView;
 
     @Override
     public int bindLayout() {
@@ -26,44 +28,89 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        setReturnVisibility(View.GONE);
-        setTitle(R.string.app_name);
-        mListView = (ListView) findViewById(R.id.listview);
-        mListView.setAdapter(new BaseAdapter() {
+        mBottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation_view);
+        mViewPager = (ViewPager) findViewById(R.id.tab_view_pager);
+        disableShiftMode();
+        setupViewPager();
+
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-            public int getCount() {
-                return mListText.length;
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
             }
 
             @Override
-            public String getItem(int position) {
-                return getResources().getString(mListText[position]);
-            }
-
-            @Override
-            public long getItemId(int position) {
-                return position;
-            }
-
-            @Override
-            public View getView(int position, View convertView, ViewGroup parent) {
-                if (convertView == null) {
-                    convertView = LayoutInflater.from(getApplicationContext()).inflate(android.R.layout.simple_list_item_1, null);
+            public void onPageSelected(int position) {
+                switch (position) {
+                    case 0:
+                        mBottomNavigationView.setSelectedItemId(R.id.navigation_schedule);
+                        break;
+                    case 1:
+                        mBottomNavigationView.setSelectedItemId(R.id.navigation_habit);
+                        break;
+                    default:
+                        break;
                 }
-                TextView text1 = (TextView) convertView.findViewById(android.R.id.text1);
-                text1.setText(getItem(position));
-                text1.setTextColor(getResources().getColor(android.R.color.black));
-                return convertView;
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
             }
         });
-        mListView.setOnItemClickListener((parent, view, position, id) -> {
-            if (mListClass.length > position) {
-                if (mListClass[position] == null) {
-                    return;
-                }
-                Intent intent = new Intent(this, mListClass[position]);
-                startActivity(intent);
+
+        mBottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.navigation_schedule:
+                    mViewPager.setCurrentItem(0);
+                    return true;
+                case R.id.navigation_habit:
+                    mViewPager.setCurrentItem(1);
+                    return true;
+                default:
+                    break;
             }
+            return false;
         });
+    }
+
+    private void disableShiftMode() {
+        BottomNavigationMenuView menuView = (BottomNavigationMenuView) mBottomNavigationView.getChildAt(0);
+        Reflect.on(menuView).set("mShiftingMode", false);
+        for (int i = 0; i < menuView.getChildCount(); i++) {
+            BottomNavigationItemView item = (BottomNavigationItemView) menuView.getChildAt(i);
+            item.setShiftingMode(false);
+            item.setChecked(item.getItemData().isChecked());
+        }
+    }
+
+    private void setupViewPager() {
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(LibFragment.newInstance());
+        adapter.addFragment(new Fragment());
+        mViewPager.setAdapter(adapter);
+    }
+
+    private class ViewPagerAdapter extends FragmentStatePagerAdapter {
+
+        private final List<Fragment> mFragmentList = new ArrayList<>();
+
+        private ViewPagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return mFragmentList.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return mFragmentList.size();
+        }
+
+        private void addFragment(Fragment fragment) {
+            mFragmentList.add(fragment);
+        }
     }
 }

@@ -14,6 +14,7 @@ import android.webkit.WebView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.facebook.common.util.UriUtil;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.backends.pipeline.PipelineDraweeControllerBuilder;
 import com.facebook.drawee.controller.BaseControllerListener;
@@ -26,6 +27,7 @@ import com.facebook.imagepipeline.request.ImageRequestBuilder;
 import com.yuyi.lib.R;
 import com.yuyi.lib.abs.BaseFragment;
 import com.yuyi.lib.image.photodrawee.PhotoDraweeView;
+import com.yuyi.lib.utils.FileUtil;
 import com.yuyi.lib.utils.MyLog;
 
 import fr.castorflex.android.smoothprogressbar.SmoothProgressBar;
@@ -94,7 +96,16 @@ public class ImageFragment extends BaseFragment {
      * 加载图片,调用这个方法可以重新加载
      */
     public void doBusiness() {
-        ImageRequest request = ImageRequestBuilder.newBuilderWithSource(Uri.parse(mUrl))
+        Uri uri;
+        if (FileUtil.isExits(mUrl)) {
+            uri = new Uri.Builder()
+                    .scheme(UriUtil.LOCAL_FILE_SCHEME)
+                    .path(mUrl)
+                    .build();
+        } else {
+            uri = Uri.parse(mUrl);
+        }
+        ImageRequest request = ImageRequestBuilder.newBuilderWithSource(uri)
                 .setProgressiveRenderingEnabled(true)
                 .build();
 

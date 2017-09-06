@@ -5,8 +5,10 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.TextView;
 
+import com.jaeger.library.StatusBarUtil;
 import com.yuyi.lib.R;
 import com.yuyi.lib.swipebacklayout.activity.SwipeBackActivity;
+import com.yuyi.lib.utils.DensityUtil;
 
 /**
  * @author huanghua
@@ -18,6 +20,7 @@ public abstract class BaseSwipeBackActivity extends SwipeBackActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(bindLayout());
+        resetTitleBar();
         initView();
     }
 
@@ -144,6 +147,18 @@ public abstract class BaseSwipeBackActivity extends SwipeBackActivity {
             return;
         }
         titleBar.setBackgroundResource(resId);
+    }
+
+    /**
+     * 使用沉浸式状态栏，titleBar需要下移
+     * 在布局上使用android:fitsSystemWindows="true"即可实现下移
+     */
+    private void resetTitleBar() {
+        StatusBarUtil.setTranslucentForImageViewInFragment(this, 0, null);
+//        View titleBar = findViewById(R.id.title_bar);
+//        if (titleBar != null) {
+//            titleBar.setPadding(0, DensityUtil.getStatusBarHeight(this), 0, 0);
+//        }
     }
 
     public void destroy(View view) {

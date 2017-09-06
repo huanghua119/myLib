@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:padding="3dp">
+
+        <ImageView
+            android:id="@+id/item_photo"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dip"
+            android:layout_marginRight="13dip"
+            android:src="@mipmap/defalut_photo"/>
+
+        <TextView
+            android:id="@+id/item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="5dip"
+            android:layout_toRightOf="@+id/item_photo"
+            android:gravity="center_vertical"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/item_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/item_name"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/item_photo"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxWidth="150dip"
+            android:singleLine="true"
+            android:textColor="@android:color/black"
+            android:textSize="12sp"/>
+
+
+        <TextView
+            android:id="@+id/item_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dip"
+            android:gravity="center_vertical"
+            android:textColor="@android:color/black"
+            android:textSize="12sp"/>
+
+    </RelativeLayout>
+</layout>

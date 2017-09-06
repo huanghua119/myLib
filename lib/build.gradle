@@ -42,4 +42,8 @@ dependencies {
     compile 'com.facebook.fresco:fresco:0.10.0'
     compile 'com.facebook.fresco:imagepipeline-okhttp3:0.10.0'
     compile 'com.github.castorflex.smoothprogressbar:library:1.1.0'
+    // 实现沉浸式状态栏/变色状态
+    compile 'com.jaeger.statusbarutil:library:1.4.0'
+    // 侧滑删除控件
+    compile 'com.yanzhenjie:recyclerview-swipe:1.1.2'
 }

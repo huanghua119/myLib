@@ -10,4 +10,10 @@
     <string name="image_preview">图片预览</string>
     <string name="save">保存</string>
     <string name="pager_view">PagerView</string>
+    <string name="example">实例</string>
+    <string name="waiting">更多</string>
+    <string name="swipe_delete">侧滑删除</string>
+    <string name="flag_unread">标为未读</string>
+    <string name="to_top">置顶</string>
+    <string name="delete">删除</string>
 </resources>

@@ -15,7 +15,6 @@ import com.yuyi.lib.ui.PagerView
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import java.util.*
 
 class PagerActivity : BaseSwipeBackActivity() {
 
