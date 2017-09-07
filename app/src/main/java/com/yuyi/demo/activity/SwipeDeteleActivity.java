@@ -1,10 +1,13 @@
 package com.yuyi.demo.activity;
 
 import android.graphics.Color;
+import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.ButtonBarLayout;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -20,6 +23,11 @@ import com.yuyi.lib.ui.CircleIndicator;
 import com.yuyi.lib.ui.loopViewPager.LoopViewPager;
 import com.yuyi.lib.utils.MyLog;
 
+import java.util.concurrent.TimeUnit;
+
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+
 /**
  * @author huanghua
  */
@@ -31,6 +39,7 @@ public class SwipeDeteleActivity extends BaseSwipeBackActivity {
     private SwipeMenuRecyclerView mRecyclerView;
     private LoopViewPager mLoopView;
     private CircleIndicator mLoopIndicator;
+    private SwipeRefreshLayout mRefreshLayout;
 
     private CollapsingToolbarLayoutState mCollapsingState;
 
@@ -47,12 +56,14 @@ public class SwipeDeteleActivity extends BaseSwipeBackActivity {
 
         mAppBarLayout.addOnOffsetChangedListener((appBarLayout, verticalOffset) -> {
             if (verticalOffset == 0) {
+                mRefreshLayout.setEnabled(true);
                 if (mCollapsingState != CollapsingToolbarLayoutState.EXPANDED) {
                     mCollapsingState = CollapsingToolbarLayoutState.EXPANDED;
                 }
             } else if (Math.abs(verticalOffset) >= appBarLayout.getTotalScrollRange()) {
                 if (mCollapsingState != CollapsingToolbarLayoutState.COLLAPSED) {
                     mReturnLayout.setVisibility(View.VISIBLE);
+                    mRefreshLayout.setEnabled(false);
                     mCollapsingState = CollapsingToolbarLayoutState.COLLAPSED;
                 }
             } else {
@@ -90,6 +101,16 @@ public class SwipeDeteleActivity extends BaseSwipeBackActivity {
         mLoopView.setAdapter(new LoopPagerAdapter(this));
         mLoopIndicator.setViewPager(mLoopView);
         mLoopView.setLooperPic(true);
+
+        mRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.refresh_layou);
+        mRefreshLayout.setOnRefreshListener(() ->
+                Observable.interval(4, TimeUnit.SECONDS)
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(aLong -> {
+                            if (mRefreshLayout.isRefreshing()) {
+                                mRefreshLayout.setRefreshing(false);
+                            }
+                        }));
     }
 
     private SwipeMenuCreator mSwipeMenuCreator = (swipeLeftMenu, swipeRightMenu, viewType) -> {

@@ -6,91 +6,97 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <android.support.design.widget.CoordinatorLayout
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/refresh_layou"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.design.widget.AppBarLayout
-            android:id="@+id/app_bar"
+        <android.support.design.widget.CoordinatorLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:fitsSystemWindows="true"
-            android:theme="@style/AppTheme.AppBarOverlay">
+            android:layout_height="match_parent">
 
-            <android.support.design.widget.CollapsingToolbarLayout
-                android:id="@+id/toolbar_layout"
+            <android.support.design.widget.AppBarLayout
+                android:id="@+id/app_bar"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="200dp"
                 android:fitsSystemWindows="true"
-                app:contentScrim="?attr/colorPrimary"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+                android:theme="@style/AppTheme.AppBarOverlay">
 
-                <FrameLayout
+                <android.support.design.widget.CollapsingToolbarLayout
+                    android:id="@+id/toolbar_layout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:fitsSystemWindows="true">
-                    <com.yuyi.lib.ui.loopViewPager.LoopViewPager
-                        android:id="@+id/loop_view"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"/>
+                    android:fitsSystemWindows="true"
+                    app:contentScrim="?attr/colorPrimary"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-                    <com.yuyi.lib.ui.CircleIndicator
-                        android:id="@+id/circle_indicator"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:layout_gravity="bottom|center_vertical"
-                        android:orientation="horizontal"/>
-                </FrameLayout>
-
-                <android.support.v7.widget.Toolbar
-                    android:id="@+id/toolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    app:layout_collapseMode="pin"
-                    app:popupTheme="@style/AppTheme.AppBarOverlay">
-
-                    <android.support.v7.widget.ButtonBarLayout
-                        android:id="@+id/return_layout"
+                    <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center_vertical|start"
-                        android:visibility="gone">
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="10dip"
-                            android:background="@drawable/btn_back_bg"
-                            android:gravity="center_vertical"/>
+                        android:fitsSystemWindows="true">
+                        <com.yuyi.lib.ui.loopViewPager.LoopViewPager
+                            android:id="@+id/loop_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
 
-                        <TextView
-                            android:id="@+id/return_text"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_vertical"
-                            android:singleLine="true"
-                            android:text="@string/swipe_delete"
-                            android:textColor="@android:color/white"
-                            android:textSize="18sp"/>
-                    </android.support.v7.widget.ButtonBarLayout>
+                        <com.yuyi.lib.ui.CircleIndicator
+                            android:id="@+id/circle_indicator"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_gravity="bottom|center_vertical"
+                            android:orientation="horizontal"/>
+                    </FrameLayout>
 
-                </android.support.v7.widget.Toolbar>
+                    <android.support.v7.widget.Toolbar
+                        android:id="@+id/toolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        app:layout_collapseMode="pin"
+                        app:popupTheme="@style/AppTheme.AppBarOverlay">
 
-            </android.support.design.widget.CollapsingToolbarLayout>
-        </android.support.design.widget.AppBarLayout>
+                        <android.support.v7.widget.ButtonBarLayout
+                            android:id="@+id/return_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical|start"
+                            android:visibility="gone">
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="10dip"
+                                android:background="@drawable/btn_back_bg"
+                                android:gravity="center_vertical"/>
 
-        <android.support.v4.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+                            <TextView
+                                android:id="@+id/return_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:singleLine="true"
+                                android:text="@string/swipe_delete"
+                                android:textColor="@android:color/white"
+                                android:textSize="18sp"/>
+                        </android.support.v7.widget.ButtonBarLayout>
 
-            <com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView
-                android:id="@+id/recycler_view"
+                    </android.support.v7.widget.Toolbar>
+
+                </android.support.design.widget.CollapsingToolbarLayout>
+            </android.support.design.widget.AppBarLayout>
+
+            <android.support.v4.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scrollbars="vertical"/>
+                android:orientation="vertical"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        </android.support.v4.widget.NestedScrollView>
+                <com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView
+                    android:id="@+id/recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scrollbars="vertical"/>
 
-    </android.support.design.widget.CoordinatorLayout>
+            </android.support.v4.widget.NestedScrollView>
+
+        </android.support.design.widget.CoordinatorLayout>
+    </android.support.v4.widget.SwipeRefreshLayout>
 </LinearLayout>
