@@ -10,7 +10,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.yuyi.demo.R;
-import com.yuyi.demo.activity.DownloadActivity;
+import com.yuyi.demo.download.DownloadActivity;
 import com.yuyi.demo.activity.FunctionActivity;
 import com.yuyi.demo.activity.ImagePreviewActivity;
 import com.yuyi.demo.activity.PagerActivity;

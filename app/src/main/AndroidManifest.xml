@@ -23,7 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activity.DownloadActivity"/>
+        <activity android:name=".download.DownloadActivity"/>
         <activity android:name=".activity.FunctionActivity"/>
         <activity android:name=".activity.PanelDountActivity"/>
         <activity android:name=".activity.ImagePreviewActivity"/>
