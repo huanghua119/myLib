@@ -1,5 +1,6 @@
 package com.yuyi.demo.activity;
 
+import android.support.annotation.NonNull;
 import android.support.design.internal.BottomNavigationItemView;
 import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
@@ -11,6 +12,7 @@ import android.support.v4.view.ViewPager;
 import com.yuyi.demo.R;
 import com.yuyi.demo.fragment.LibFragment;
 import com.yuyi.lib.abs.BaseActivity;
+import com.yuyi.lib.permission.PermissionsManager;
 import com.yuyi.lib.reflect.Reflect;
 
 import java.util.ArrayList;
@@ -72,6 +74,17 @@ public class MainActivity extends BaseActivity {
             }
             return false;
         });
+
+        if (PermissionsManager.getInstance().checkPermissions()) {
+            PermissionsManager.getInstance().requestPermissions(this);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == 0 && PermissionsManager.getInstance().hasAllPermissionsGranted(grantResults)) {
+
+        }
     }
 
     private void disableShiftMode() {

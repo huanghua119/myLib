@@ -10,6 +10,7 @@ import com.facebook.imagepipeline.cache.DefaultCacheKeyFactory;
 import com.facebook.imagepipeline.core.ImagePipelineFactory;
 import com.facebook.imagepipeline.request.ImageRequest;
 import com.yuyi.lib.R;
+import com.yuyi.lib.okhttp.HttpManager;
 
 import java.io.File;
 import java.io.InputStream;
@@ -38,7 +39,7 @@ public class ImageUtils {
                 .map(s -> getImageBytesFromLocal(Uri.parse(s)))
                 .map(in -> {
                     if (in != null) {
-                        String fileName = HttpUtils.getFileNameFromUrl(url);
+                        String fileName = HttpManager.getInstance().getFileNameFromUrl(url);
                         File target = new File(saveDir, fileName);
                         if (target.exists()) {
                             return target;
@@ -60,12 +61,7 @@ public class ImageUtils {
                     if (file != null && file.exists()) {
                         return file;
                     }
-                    try {
-                        HttpUtils.httpDownload(url, file);
-                        return file;
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+                    HttpManager.getInstance().httpDownload(url, file);
                     return null;
                 })
                 .doOnNext(file -> {
