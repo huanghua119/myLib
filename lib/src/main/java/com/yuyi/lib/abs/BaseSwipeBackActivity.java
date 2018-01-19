@@ -8,7 +8,6 @@ import android.widget.TextView;
 import com.jaeger.library.StatusBarUtil;
 import com.yuyi.lib.R;
 import com.yuyi.lib.swipebacklayout.activity.SwipeBackActivity;
-import com.yuyi.lib.utils.DensityUtil;
 
 /**
  * @author huanghua

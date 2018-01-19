@@ -3,7 +3,6 @@ package com.yuyi.lib;
 import android.content.Context;
 
 import com.facebook.cache.disk.DiskCacheConfig;
-import com.facebook.common.internal.Supplier;
 import com.facebook.common.util.ByteConstants;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.imagepipeline.backends.okhttp3.OkHttpImagePipelineConfigFactory;
@@ -14,6 +13,7 @@ import com.facebook.imagepipeline.decoder.SimpleProgressiveJpegConfig;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
+import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 /**
  * @author huanghua
@@ -29,6 +29,15 @@ public final class MyLib {
 
     public static void init(Context context) {
         sApplicationContext = context;
+
+        // Custom fonts
+        CalligraphyConfig.initDefault(
+                new CalligraphyConfig.Builder()
+                        .setDefaultFontPath("fonts/Roboto-Monospace-Regular.ttf")
+                        .setFontAttrId(R.attr.fontPath)
+                        .build()
+        );
+
         checkContext();
         initFrescoConfig();
     }
