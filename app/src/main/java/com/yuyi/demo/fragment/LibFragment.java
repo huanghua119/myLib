@@ -10,6 +10,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.yuyi.demo.R;
+import com.yuyi.demo.activity.InfiniteCycleActivity;
 import com.yuyi.demo.download.DownloadActivity;
 import com.yuyi.demo.activity.FunctionActivity;
 import com.yuyi.demo.activity.ImagePreviewActivity;
@@ -31,9 +32,9 @@ public class LibFragment extends BaseFragment {
 
     private ListView mListView = null;
 
-    private int[] mListText = {R.string.breakpoint, R.string.function_policy, R.string.panel_dount, R.string.image_preview, R.string.pager_view, R.string.swipe_delete};
+    private int[] mListText = {R.string.breakpoint, R.string.function_policy, R.string.panel_dount, R.string.image_preview, R.string.pager_view, R.string.swipe_delete, R.string.infinitecycle};
 
-    private Class[] mListClass = {DownloadActivity.class, FunctionActivity.class, PanelDountActivity.class, ImagePreviewActivity.class, PagerActivity.class, SwipeDeteleActivity.class};
+    private Class[] mListClass = {DownloadActivity.class, FunctionActivity.class, PanelDountActivity.class, ImagePreviewActivity.class, PagerActivity.class, SwipeDeteleActivity.class, InfiniteCycleActivity.class};
 
     @Override
     public int bindLayout() {

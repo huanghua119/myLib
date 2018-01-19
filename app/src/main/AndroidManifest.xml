@@ -29,6 +29,7 @@
         <activity android:name=".activity.ImagePreviewActivity"/>
         <activity android:name=".activity.PagerActivity"/>
         <activity android:name=".activity.SwipeDeteleActivity"/>
+        <activity android:name=".activity.InfiniteCycleActivity"/>
     </application>
 
 </manifest>
