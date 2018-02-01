@@ -15,9 +15,13 @@ public interface DownloadContract {
         void downloadError(Throwable e);
 
         void downloadProgress(int progress);
+
+        void downloadPaused(int progress);
     }
 
     interface Presenter extends BasePresenter {
+        void initDownloadInfo(String url);
+
         void startDownload(String url);
     }
 }

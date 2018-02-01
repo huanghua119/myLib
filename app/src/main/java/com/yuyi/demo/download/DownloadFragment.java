@@ -28,7 +28,8 @@ public class DownloadFragment extends BaseFragment implements DownloadContract.V
 
     @Override
     public void downloadSuccess() {
-        mDownload.setText(R.string.download);
+        mDownload.setText(R.string.download_success);
+        mProgressBar.setProgress(0);
     }
 
     @Override
@@ -43,6 +44,12 @@ public class DownloadFragment extends BaseFragment implements DownloadContract.V
     }
 
     @Override
+    public void downloadPaused(int progress) {
+        mDownload.setText(R.string.download_pause);
+        mProgressBar.setProgress(progress);
+    }
+
+    @Override
     public void setPresenter(DownloadContract.Presenter presenter) {
         mPresenter = presenter;
     }
@@ -54,6 +61,7 @@ public class DownloadFragment extends BaseFragment implements DownloadContract.V
 
     @Override
     public void initView(View view) {
+        mPresenter.initDownloadInfo(url);
         mDownload = (Button) view.findViewById(R.id.start_download);
         mDownload.setOnClickListener(v -> mPresenter.startDownload(url));
         mProgressBar = (ProgressBar) view.findViewById(R.id.progress_bar);

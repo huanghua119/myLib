@@ -5,6 +5,7 @@
     <string name="downloading">正在下载...</string>
     <string name="download_fail">下载失败</string>
     <string name="download_success">下载成功</string>
+    <string name="download_pause">已暂停</string>
     <string name="function_policy">动态方法调用</string>
     <string name="panel_dount">圆形统计</string>
     <string name="image_preview">图片预览</string>

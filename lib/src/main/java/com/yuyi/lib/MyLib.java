@@ -1,5 +1,6 @@
 package com.yuyi.lib;
 
+import android.app.Application;
 import android.content.Context;
 
 import com.facebook.cache.disk.DiskCacheConfig;
@@ -9,7 +10,11 @@ import com.facebook.imagepipeline.backends.okhttp3.OkHttpImagePipelineConfigFact
 import com.facebook.imagepipeline.cache.MemoryCacheParams;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
 import com.facebook.imagepipeline.decoder.SimpleProgressiveJpegConfig;
+import com.liulishuo.filedownloader.FileDownloader;
+import com.liulishuo.filedownloader.connection.FileDownloadUrlConnection;
+import com.liulishuo.filedownloader.util.FileDownloadLog;
 
+import java.net.Proxy;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -40,6 +45,7 @@ public final class MyLib {
 
         checkContext();
         initFrescoConfig();
+        initDownload();
     }
 
     public static Context getApplicationContext() {
@@ -71,5 +77,18 @@ public final class MyLib {
                 .setDownsampleEnabled(true)
                 .build();
         Fresco.initialize(sApplicationContext, config);
+    }
+
+    private static void initDownload() {
+        FileDownloadLog.NEED_LOG = false;
+        FileDownloader.setupOnApplicationOnCreate((Application) sApplicationContext)
+                .connectionCreator(new FileDownloadUrlConnection
+                        .Creator(new FileDownloadUrlConnection.Configuration()
+                        .connectTimeout(15_000) // set connection timeout.
+                        .readTimeout(15_000) // set read timeout.
+                        .proxy(Proxy.NO_PROXY) // set proxy
+                ))
+                .maxNetworkThreadCount(3)
+                .commit();
     }
 }
