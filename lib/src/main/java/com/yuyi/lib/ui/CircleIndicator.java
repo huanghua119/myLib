@@ -18,23 +18,23 @@ package com.yuyi.lib.ui;
 
 import android.animation.Animator;
 import android.animation.AnimatorInflater;
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.database.DataSetObserver;
 import android.os.Build;
-import android.support.annotation.AnimatorRes;
-import android.support.annotation.DrawableRes;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
 import android.view.animation.Interpolator;
 import android.widget.LinearLayout;
 
-import com.yuyi.lib.R;
+import androidx.annotation.AnimatorRes;
+import androidx.annotation.DrawableRes;
+import androidx.viewpager.widget.ViewPager;
 
-import static android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.yuyi.lib.R;
 
 public class CircleIndicator extends LinearLayout {
 
@@ -44,6 +44,9 @@ public class CircleIndicator extends LinearLayout {
     private int mIndicatorMargin = -1;
     private int mIndicatorWidth = -1;
     private int mIndicatorHeight = -1;
+
+    @SuppressLint("ResourceType")
+    @AnimatorRes
     private int mAnimatorResId = R.anim.scale_with_alpha;
     private int mAnimatorReverseResId = 0;
     private int mIndicatorBackgroundResId = R.drawable.white_radius;
@@ -117,6 +120,7 @@ public class CircleIndicator extends LinearLayout {
     /**
      * Create and configure Indicator in Java code.
      */
+    @SuppressLint("ResourceType")
     public void configureIndicator(int indicatorWidth, int indicatorHeight, int indicatorMargin) {
         configureIndicator(indicatorWidth, indicatorHeight, indicatorMargin,
                 R.anim.scale_with_alpha, 0, R.drawable.white_radius, R.drawable.white_radius);
@@ -189,7 +193,7 @@ public class CircleIndicator extends LinearLayout {
         }
     }
 
-    private final OnPageChangeListener mInternalPageChangeListener = new OnPageChangeListener() {
+    private final ViewPager.OnPageChangeListener mInternalPageChangeListener = new ViewPager.OnPageChangeListener() {
 
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -267,7 +271,7 @@ public class CircleIndicator extends LinearLayout {
      * @deprecated User ViewPager addOnPageChangeListener
      */
     @Deprecated
-    public void setOnPageChangeListener(OnPageChangeListener onPageChangeListener) {
+    public void setOnPageChangeListener(ViewPager.OnPageChangeListener onPageChangeListener) {
         if (mViewpager == null) {
             throw new NullPointerException("can not find Viewpager , setViewPager first");
         }

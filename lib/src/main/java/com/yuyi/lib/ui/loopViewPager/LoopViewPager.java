@@ -19,11 +19,12 @@ package com.yuyi.lib.ui.loopViewPager;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
+
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import java.util.ArrayList;
 import java.util.List;

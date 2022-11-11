@@ -1,11 +1,9 @@
 package com.yuyi.lib.abs;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.TextView;
 
-import com.jaeger.library.StatusBarUtil;
 import com.yuyi.lib.R;
 import com.yuyi.lib.swipebacklayout.activity.SwipeBackActivity;
 
@@ -14,16 +12,15 @@ import com.yuyi.lib.swipebacklayout.activity.SwipeBackActivity;
  */
 
 public abstract class BaseSwipeBackActivity extends SwipeBackActivity {
-
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(bindLayout());
         resetTitleBar();
         initView();
     }
 
-    public abstract int bindLayout();
+    public abstract View bindLayout();
 
     public abstract void initView();
 
@@ -153,7 +150,6 @@ public abstract class BaseSwipeBackActivity extends SwipeBackActivity {
      * 在布局上使用android:fitsSystemWindows="true"即可实现下移
      */
     private void resetTitleBar() {
-        StatusBarUtil.setTranslucentForImageViewInFragment(this, 0, null);
 //        View titleBar = findViewById(R.id.title_bar);
 //        if (titleBar != null) {
 //            titleBar.setPadding(0, DensityUtil.getStatusBarHeight(this), 0, 0);

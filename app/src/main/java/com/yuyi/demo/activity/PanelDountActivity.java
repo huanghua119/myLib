@@ -1,8 +1,10 @@
 package com.yuyi.demo.activity;
 
 import android.graphics.Color;
+import android.view.View;
 
 import com.yuyi.demo.R;
+import com.yuyi.demo.databinding.ActivityPaneldountBinding;
 import com.yuyi.lib.abs.BaseSwipeBackActivity;
 import com.yuyi.lib.ui.PanelDountChart;
 
@@ -11,9 +13,10 @@ import com.yuyi.lib.ui.PanelDountChart;
  */
 
 public class PanelDountActivity extends BaseSwipeBackActivity {
+
     @Override
-    public int bindLayout() {
-        return R.layout.activity_paneldount;
+    public View bindLayout() {
+        return ActivityPaneldountBinding.inflate(getLayoutInflater()).getRoot();
     }
 
     @Override

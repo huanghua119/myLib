@@ -1,23 +1,4 @@
-<manifest package="com.yuyi.lib"
-
-          xmlns:android="http://schemas.android.com/apk/res/android"
->
-
-    <application android:allowBackup="true"
-                 android:label="@string/app_name"
-                 android:supportsRtl="true"
-    >
-
-        <service android:name=".function.service.FunctionService"
-                 android:enabled="true"
-                 android:exported="true"
-                 android:persistent="true"
-                 android:process=":remote">
-            <intent-filter>
-                <action android:name="mephone.intent.action.function_service"/>
-            </intent-filter>
-        </service>
-
-    </application>
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
 </manifest>

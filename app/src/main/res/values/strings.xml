@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">游库</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
     <string name="download">下载</string>
     <string name="breakpoint">断点续传</string>
     <string name="downloading">正在下载...</string>

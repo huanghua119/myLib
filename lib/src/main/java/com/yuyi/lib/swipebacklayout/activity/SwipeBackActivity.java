@@ -2,22 +2,16 @@ package com.yuyi.lib.swipebacklayout.activity;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.yuyi.lib.swipebacklayout.SwipeBackLayout;
 import com.yuyi.lib.swipebacklayout.Utils;
 
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
-
 public class SwipeBackActivity extends AppCompatActivity implements
         SwipeBackActivityBase {
     private SwipeBackActivityHelper mHelper;
-
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

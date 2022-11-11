@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">lib</string>
     <string name="load_pic_fail">图片加载失败</string>
     <string name="save_success">保存成功</string>
     <string name="sava_fail">保存失败</string>
