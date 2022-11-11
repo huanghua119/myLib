@@ -12,24 +12,21 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.yuyi.demo.R;
 import com.yuyi.demo.activity.PanelDountActivity;
 import com.yuyi.demo.databinding.FragmentHomeBinding;
+import com.yuyi.demo.ui.download.DownloadActivity;
 
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
 
     private int[] mListText = {R.string.breakpoint, R.string.function_policy, R.string.panel_dount, R.string.image_preview, R.string.pager_view, R.string.swipe_delete, R.string.infinitecycle};
-    private Class[] mListClass = {null, null, PanelDountActivity.class, null, null, null, null};
+    private Class[] mListClass = {DownloadActivity.class, null, PanelDountActivity.class, null, null, null, null};
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        HomeViewModel homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
-
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
