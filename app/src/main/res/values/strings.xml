@@ -20,4 +20,6 @@
     <string name="to_top">置顶</string>
     <string name="delete">删除</string>
     <string name="infinitecycle">InfiniteCycle</string>
+    <string name="bitmap_effect">图片效果</string>
+    <string name="apply_dark_pic">生成深色图片</string>
 </resources>

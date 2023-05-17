@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.yuyi.demo.R;
+import com.yuyi.demo.activity.BitmapEffectActivity;
 import com.yuyi.demo.activity.PanelDountActivity;
 import com.yuyi.demo.databinding.FragmentHomeBinding;
 import com.yuyi.demo.ui.download.DownloadActivity;
@@ -22,8 +23,8 @@ public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
 
-    private int[] mListText = {R.string.breakpoint, R.string.function_policy, R.string.panel_dount, R.string.image_preview, R.string.pager_view, R.string.swipe_delete, R.string.infinitecycle};
-    private Class[] mListClass = {DownloadActivity.class, null, PanelDountActivity.class, null, null, null, null};
+    private int[] mListText = {R.string.breakpoint, R.string.function_policy, R.string.panel_dount, R.string.image_preview, R.string.pager_view, R.string.swipe_delete, R.string.infinitecycle, R.string.bitmap_effect};
+    private Class[] mListClass = {DownloadActivity.class, null, PanelDountActivity.class, null, null, null, null, BitmapEffectActivity.class};
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
